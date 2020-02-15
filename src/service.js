@@ -1,27 +1,33 @@
 const authors = [
   {
     id: 1,
-    name: "Michael Crichton"
+    name: "Michael Crichton",
+    birthDate: "23 October 1942"
   },
   {
     id: 2,
-    name: "J.K. Rowling"
+    name: "J.K. Rowling",
+    birthDate: "31 July 1965"
   },
   {
     id: 3,
-    name: "George R. R. Martin"
+    name: "George R. R. Martin",
+    birthDate: "20 September 1948"
   },
   {
     id: 4,
-    name: "Stephen King"
+    name: "Stephen King",
+    birthDate: "21 September 1947"
   },
   {
     id: 5,
-    name: "George Orwell"
+    name: "George Orwell",
+    birthDate: "25 June 1903"
   },
   {
     id: 6,
-    name: "J.R.R. Tolkien"
+    name: "J.R.R. Tolkien",
+    birthDate: "3 January 1892"
   }
 ];
 
@@ -87,8 +93,6 @@ exports.findBookByTitle = title => {
 exports.findAllAuthors = () => {
   return authors;
 };
-
-//---------------------------
 
 exports.findAutherById = id => {
   return authors.find(auther => auther.id === id);
