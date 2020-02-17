@@ -38,6 +38,7 @@ const books = [
   {
     id: 1,
     title: "Harry Potter and the Philosphers Stone",
+    genre: "Fantasy",
     genres: ["Fantasy"],
     publicationDate: "26 June 1997",
     authorId: 2
@@ -45,12 +46,14 @@ const books = [
   {
     id: 2,
     title: "Harry Potter and the Chamber of Secrets",
+    genre: "Fantasy",
     genres: ["Fantasy"],
     authorId: 2
   },
   {
     id: 3,
     title: "Jurassic Park",
+    genre: "Science Fiction",
     genres: ["Science Fiction"],
     publicationDate: "20 November 1990",
     authorId: 1
@@ -58,12 +61,14 @@ const books = [
   {
     id: 3,
     title: "The Great Gatsby",
+    genre: "Tragedy",
     genres: ["Tragedy"],
     publicationDate: "10 April 1925"
   },
   {
     id: 4,
     title: "A Game of Thrones",
+    genre: "Fantasy",
     genres: ["Fantasy"],
     publicationDate: "1 August 1996",
     authorId: 3
@@ -71,6 +76,7 @@ const books = [
   {
     id: 5,
     title: "The Hobbit",
+    genre: "Fantasy",
     genres: ["Fantasy"],
     publicationDate: "21 September 1937",
     authorId: 5
@@ -78,6 +84,7 @@ const books = [
   {
     id: 6,
     title: "1984",
+    genre: "Dystopian Fiction",
     genres: ["Dystopian Fiction"],
     publicationDate: "8 June 1949",
     authorId: 4

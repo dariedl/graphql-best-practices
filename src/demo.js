@@ -3,7 +3,7 @@ const {
   findBookById,
   findAllBooks,
   findBooksByAuthorId,
-  findBooksByTitle,
+  findBookByTitle,
   findAutherById,
   findAllAuthors
 } = require("./service");
@@ -29,7 +29,7 @@ exports.typeDefs = gql`
     allBooks: [Book!]!
     bookById(id: Int!): Book!
     bookByTitle(title: String): Book
-    authorById(id: Int!): Author
+    authorById(id: Int): Author
     allAuthors: [Author!]
   }
 `;
@@ -38,7 +38,7 @@ exports.resolvers = {
   Query: {
     allBooks: (parent, args, context, info) => findAllBooks(),
     bookById: (parent, args, context, info) => findBookById(args.id),
-    bookByTitle: (parent, args, context, info) => findBooksByTitle(args.title),
+    bookByTitle: (parent, args, context, info) => findBookByTitle(args.title),
     authorById: (parent, args, context, info) => findAutherById(args.id),
     allAuthors: (parent, args, context, info) => findAllAuthors()
   },
