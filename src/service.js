@@ -21,13 +21,16 @@ const authors = [
   },
   {
     id: 5,
-    name: "George Orwell",
-    birthDate: "25 June 1903"
+    name: "George Orwell"
   },
   {
     id: 6,
     name: "J.R.R. Tolkien",
     birthDate: "3 January 1892"
+  },
+  {
+    id: 7,
+    birthDate: "6 January 1992"
   }
 ];
 

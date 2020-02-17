@@ -11,10 +11,15 @@ const {
 //--------------------------------------------
 
 exports.typeDefs = gql`
+  directive @deprecated(
+    reason: String = "No longer supported"
+  ) on FIELD_DEFINITION | ENUM_VALUE
+
   type Book {
     id: Int!
     title: String!
     publicationDate: String
+    genre: String @deprecated(reason: "Use `newField`.")
     genres: [String]
     author: Author
   }
@@ -53,3 +58,12 @@ exports.resolvers = {
     }
   }
 };
+
+/*
+fragment BookGenre on Book {
+  title
+  genres
+}
+
+
+*/
