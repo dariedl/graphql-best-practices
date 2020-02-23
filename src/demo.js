@@ -32,6 +32,7 @@ exports.typeDefs = gql`
   type Query {
     allBooks: [Book!]!
     bookById(id: ID!): Book!
+    book(id: ID): Book @deprecated(reason: "Use bookById")
     bookByTitle(title: String): Book
     allAuthors: [Author!]
     authorById(id: ID!): Author

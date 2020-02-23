@@ -1,11 +1,10 @@
-Punkte:
-
 1. Introduction
 
 - Zielsetzung erklären
 - Kurze erklärung wie man sich graphql vorstellen kann
 
-2. Show queries and explain the strengths of graphql compared to rest
+2. Zeige gleich den Editor mit den Vorteilen
+
 
 3. Show the code and type definition
 
