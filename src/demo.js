@@ -10,10 +10,15 @@ const {
 } = require("./service");
 
 exports.typeDefs = gql`
+  directive @deprecated(
+    reason: String = "No longer supported"
+  ) on FIELD_DEFINITION | ENUM_VALUE
+
   type Book {
     id: ID!
     title: String!
     publicationDate: String
+    genre: String @deprecated(reason: "Use genres.")
     genres: [String]
     author: Author
   }
