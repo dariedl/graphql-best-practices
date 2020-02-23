@@ -5,21 +5,20 @@ const {
   findBooksByAuthorId,
   findBookByTitle,
   findAutherById,
-  findAllAuthors
+  findAllAuthors,
+  createBook
 } = require("./service");
-
-//--------------------------------------------
 
 exports.typeDefs = gql`
   type Book {
-    id: Int!
+    id: ID!
     title: String!
     publicationDate: String
     genres: [String]
     author: Author
   }
   type Author {
-    id: Int!
+    id: ID!
     name: String
     books: [Book]
     birthDate: String
@@ -27,10 +26,28 @@ exports.typeDefs = gql`
 
   type Query {
     allBooks: [Book!]!
-    bookById(id: Int!): Book!
+    bookById(id: ID!): Book!
     bookByTitle(title: String): Book
-    authorById(id: Int): Author
     allAuthors: [Author!]
+    authorById(id: ID!): Author
+  }
+
+  input CreateBookInput {
+    title: String!
+    publicationDate: String
+    genres: [String]
+    authorId: ID
+  }
+
+  type CreateBookOutput {
+    title: String!
+    publicationDate: String
+    genres: [String]
+    author: Author
+  }
+
+  type Mutation {
+    createBook(input: CreateBookInput!): CreateBookOutput
   }
 `;
 
@@ -42,14 +59,16 @@ exports.resolvers = {
     authorById: (parent, args, context, info) => findAutherById(args.id),
     allAuthors: (parent, args, context, info) => findAllAuthors()
   },
+  Mutation: {
+    createBook: (parent, args, context, info) => createBook(args.input)
+  },
   Book: {
-    author(parent, args, context, info) {
-      return findAutherById(parent.authorId);
-    }
+    author: (parent, args, context, info) => findAutherById(parent.authorId)
   },
   Author: {
-    books(parent) {
-      return findBooksByAuthorId(parent.id);
-    }
+    books: (parent, args, context, info) => findBooksByAuthorId(parent.id)
+  },
+  CreateBookOutput: {
+    author: (parent, args, context, info) => findAutherById(parent.authorId)
   }
 };
