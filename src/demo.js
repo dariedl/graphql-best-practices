@@ -21,24 +21,24 @@ const typeDefs = gql`
     title: String!
     publicationDate: String
     genre: String @deprecated(reason: "Use genres instead")
-    genres: [String!]
+    genres: [String!]!
     author: Author
   }
   type Author {
     id: ID!
     name: String
-    books: [Book!]
+    books: [Book!]!
     birthDate: String
   }
 
   type Query {
     allBooks: [Book!]!
-    book(id: ID, genre: String, year: Int): Book
+    books(id: ID, genre: String, year: Int): [Book]
       @deprecated(reason: "Use other queries instead instead")
     bookById(id: ID!): Book!
     bookByTitle(title: String!): Book
     bookByYear(year: Int!): Book
-    allAuthors: [Author!]
+    allAuthors: [Author!]!
     authorById(id: ID!): Author
   }
 
@@ -64,7 +64,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     allBooks: (parent, args, context, info) => findAllBooks(),
-    book: (parent, args, context, info) => findBooks(args),
+    books: (parent, args, context, info) => findBooks(args),
     bookById: (parent, args, context, info) => findBookById(args.id),
     bookByTitle: (parent, args, context, info) => findBookByTitle(args.title),
     bookByYear: (parent, args, context, info) => findBooksByYear(args.year),
