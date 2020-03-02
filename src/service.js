@@ -55,18 +55,17 @@ const books = [
     title: "Jurassic Park",
     genre: "Science Fiction",
     genres: ["Science Fiction"],
-    publicationDate: "20 November 1990",
-    authorId: "1"
+    publicationDate: "20 November 1990"
   },
   {
-    id: "3",
+    id: "4",
     title: "The Great Gatsby",
     genre: "Tragedy",
     genres: ["Tragedy"],
     publicationDate: "10 April 1925"
   },
   {
-    id: "4",
+    id: "5",
     title: "A Game of Thrones",
     genre: "Fantasy",
     genres: ["Fantasy"],
@@ -74,7 +73,7 @@ const books = [
     authorId: "3"
   },
   {
-    id: "5",
+    id: "6",
     title: "The Hobbit",
     genre: "Fantasy",
     genres: ["Fantasy"],
@@ -82,7 +81,7 @@ const books = [
     authorId: "5"
   },
   {
-    id: "6",
+    id: "7",
     title: "1984",
     genre: "Dystopian Fiction",
     genres: ["Dystopian Fiction"],
@@ -110,6 +109,13 @@ exports.findAutherById = id => {
 
 exports.findBooksByAuthorId = id => {
   return books.filter(book => book.authorId === id);
+};
+
+exports.findBooks = (...args) => {
+  return [books[0]];
+};
+exports.findBooksByYear = (...args) => {
+  return [books[0]];
 };
 
 exports.createBook = book => {
