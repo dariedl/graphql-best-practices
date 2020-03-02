@@ -75,6 +75,7 @@ const resolvers = {
     createBook: (parent, args, context, info) => createBook(args.input)
   },
   Book: {
+    genre: (parent, args, context, info) => parent.genres[0] || "",
     author: (parent, args, context, info) => findAutherById(parent.authorId)
   },
   Author: {

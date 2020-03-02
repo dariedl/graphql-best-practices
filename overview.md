@@ -1,11 +1,10 @@
 # Topics for Talk
 
 - Introduction to GraphQL
-- Schema Design
+- Schema Design/Avoiding Breaking Changes
 - When and why to use Nullable
-- No Versioning
 - Beware the N+1 Problem
-- Where to handle Authorization
+- How to handle Authorization
 
 # Probably not included
 
