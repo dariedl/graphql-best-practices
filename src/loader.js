@@ -1,5 +1,5 @@
 import DataLoader from "dataloader";
-import { batchFindBooksByIds, batchFindAuthorsByIds, executeQueries, batchFindPublishersByIds } from "./service";
+import { batchFindBooksByIds, batchFindAuthorsByIds, executeQueries } from "./service";
 
 export const loadConfig = () => ({
   books: new DataLoader(async (ids) => batchFindBooksByIds(ids)),
@@ -13,8 +13,7 @@ export const resolvers = {
     allAuthors: async (obj, args, context, info) => {},
   },
   Book: {
-    publisher: async (obj, args, context, info) => {},
-    authors: async (obj, args, context, info) => {},
+    author: async (obj, args, context, info) => {},
   },
   Author: {
     books: async (obj, args, context, info) => {},

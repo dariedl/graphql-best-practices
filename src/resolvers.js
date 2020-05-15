@@ -1,13 +1,4 @@
-import {
-  findBookById,
-  findAllBooks,
-  findAuthorById,
-  findAllAuthors,
-  findBooksByAuthorId,
-  findAuthorsByBookId,
-  createBook,
-  findBooksByGenre,
-} from "./service";
+import { findBookById, findAllBooks, findAuthorById, findAllAuthors, findBooksByAuthorId, createBook, findBooksByGenre } from "./service";
 import { PubSub } from "apollo-server";
 const pubsub = new PubSub();
 const BOOK_CREATED = "BOOK_CREATED";
@@ -23,7 +14,7 @@ export default {
 
   // Field Resolvers ------------------------------------------------------------------------
   Book: {
-    authors: (obj, args, context, info) => findAuthorById(obj.authorId),
+    author: (obj, args, context, info) => findAuthorById(obj.authorId),
     genre: (obj, args, context, info) => "deprecated",
   },
   Author: {

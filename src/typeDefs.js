@@ -12,7 +12,7 @@ export const typeDefs = gql`
   type Author {
     id: ID!
     name: String
-    releaseDate: String
+    birthDate: String
     books: [Book!]
   }
 
@@ -20,6 +20,7 @@ export const typeDefs = gql`
     id: ID!
     title: String!
     author: Author
+    type: String
     genres: [String!]
     genre: String @deprecated(reason: "Use genres instead")
   }
