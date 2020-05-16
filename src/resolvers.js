@@ -20,7 +20,6 @@ export default {
   Author: {
     books: (obj, args, context, info) => findBooksByAuthorId(obj.id),
   },
-
   //------------------------------------------------------------------------
   Mutation: {
     createBook: (obj, args, context, info) => {

@@ -47,20 +47,26 @@ export function createBook(book) {
 }
 
 // Batch methods ---------------------
-export function batchFindBooksByIds(ids) {
-  log(batchFindBooksByIds.name, ...ids);
-  return ids.map((id) => books.find((book) => book.id === id));
+export function batchFindBooksByIds(bookIds) {
+  log(batchFindBooksByIds.name, ...bookIds);
+  return bookIds.map((bookId) => books.find((book) => book.id === bookId));
 }
-export function batchFindAuthorsByIds(ids) {
-  log(batchFindAuthorsByIds.name, ...ids);
-  return ids.map((id) => authors.find((author) => author.id === id));
+export function batchFindAuthorsByIds(authorIds) {
+  log(batchFindAuthorsByIds.name, ...authorIds);
+  return authorIds.map((authorId) => authors.find((author) => author.id === authorId));
+}
+export function batchFindBooksByAuthorIds(authorIds) {
+  log(batchFindBooksByAuthorIds.name, ...authorIds);
+  return authorIds.map((authorId) => {
+    return books.filter((book) => book.authorId === authorId);
+  });
 }
 
 export function executeQueries(queries) {
   return queries.map((query) => {
-    if (query === "allauthors") {
+    if (query === "allAuthors") {
       return findAllAuthors();
-    } else if (query === "allbooks") {
+    } else if (query === "allBooks") {
       return findAllBooks();
     } else {
       return [];

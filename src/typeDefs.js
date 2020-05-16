@@ -2,12 +2,22 @@ const { gql } = require("apollo-server");
 
 export const typeDefs = gql`
   type Query {
-    bookById(id: ID!): Book!
-    booksByGenre(genre: String!): [Book]!
-    allBooks: [Book!]!
+    bookById(id: ID!): Book
+    booksByGenre(genre: String!): [Book]
+    allBooks: [Book]!
     authorById(id: ID!): Author!
-    allAuthors: [Author]!
+    allAuthors: [Author!]
   }
+
+  type Mutation {
+    createBook(input: CreateBookInput!): CreateBookOutput
+  }
+
+  type Subscription {
+    bookCreated: CreateBookOutput
+  }
+
+  # ----------------------------------------
 
   type Author {
     id: ID!
@@ -19,18 +29,10 @@ export const typeDefs = gql`
   type Book {
     id: ID!
     title: String!
-    author: Author
+    author: Author!
     type: String
     genres: [String!]
     genre: String @deprecated(reason: "Use genres instead")
-  }
-
-  directive @deprecated(reason: String = "No longer supported") on FIELD_DEFINITION
-
-  # ----------------------------------------
-
-  type Mutation {
-    createBook(input: CreateBookInput!): CreateBookOutput
   }
 
   input CreateBookInput {
@@ -49,7 +51,5 @@ export const typeDefs = gql`
 
   # ----------------------------------------
 
-  type Subscription {
-    bookCreated: CreateBookOutput
-  }
+  directive @deprecated(reason: String = "No longer supported") on FIELD_DEFINITION
 `;
