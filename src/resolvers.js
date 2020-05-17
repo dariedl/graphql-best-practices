@@ -32,7 +32,7 @@ export default {
   //------------------------------------------------------------------------
   Subscription: {
     bookCreated: {
-      subscribe: () => pubsub.asyncIterator([BOOK_CREATED]),
+      subscribe: (obj, args, context, info) => pubsub.asyncIterator([BOOK_CREATED]),
     },
   },
 };

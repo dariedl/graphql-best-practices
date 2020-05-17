@@ -41,7 +41,7 @@ let counter = 0;
 export function createBook(book) {
   log(createBook.name, JSON.stringify(book));
   const newId = books.length.toString();
-  const newbook = { id: newId, ...book };
+  const newbook = { id: "b" + newId, ...book };
   books.push(newbook);
   return { ...newbook, mutationId: "mID-" + ++counter };
 }

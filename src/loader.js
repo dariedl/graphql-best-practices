@@ -1,5 +1,5 @@
 import DataLoader from "dataloader";
-import { batchFindBooksByIds, batchFindAuthorsByIds, executeQueries, batchFindBooksByAuthorIds, findAllAuthors } from "./service";
+import { batchFindBooksByIds, batchFindAuthorsByIds, executeQueries, batchFindBooksByAuthorIds } from "./service";
 
 export const loadConfig = () => ({
   books: new DataLoader(async (bookIds) => batchFindBooksByIds(bookIds)),
@@ -10,25 +10,15 @@ export const loadConfig = () => ({
 
 export const resolvers = {
   Query: {
-    bookById: (obj, args, context, info) => context.dataloaders.books.load(args.id),
-    authorById: (obj, args, context, info) => context.dataloaders.authors.load(args.id),
-    allAuthors: async (obj, args, context, info) => {
-      const allAuthors = await context.dataloaders.queries.load("allAuthors");
-      allAuthors.forEach((author) => context.dataloaders.authors.prime(author.id, author));
-      return allAuthors;
-    },
-    allBooks: async (obj, args, context, info) => {
-      const allBooks = await context.dataloaders.queries.load("allBooks");
-      allBooks.forEach((book) => context.dataloaders.authors.prime(book.id, book));
-      return allBooks;
-    },
+    bookById: (obj, args, context, info) => {},
+    authorById: (obj, args, context, info) => {},
+    allBooks: async (obj, args, context, info) => {},
+    allAuthors: async (obj, args, context, info) => {},
   },
   Book: {
-    author: async (obj, args, context, info) => context.dataloaders.authors.load(obj.authorId),
+    author: async (obj, args, context, info) => {},
   },
   Author: {
-    books: async (obj, args, context, info) => {
-      return context.dataloaders.booksByAuthors.load(obj.id);
-    },
+    books: async (obj, args, context, info) => {},
   },
 };
