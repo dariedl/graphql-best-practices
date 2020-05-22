@@ -11,7 +11,6 @@ export default {
     authorById: (obj, args, context, info) => findAuthorById(args.id),
     allAuthors: (obj, args, context, info) => findAllAuthors(),
   },
-
   // Field Resolvers ------------------------------------------------------------------------
   Book: {
     author: (obj, args, context, info) => findAuthorById(obj.authorId),
@@ -28,7 +27,6 @@ export default {
       return book;
     },
   },
-
   //------------------------------------------------------------------------
   Subscription: {
     bookCreated: {

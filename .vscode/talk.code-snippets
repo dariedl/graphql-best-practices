@@ -1,0 +1,68 @@
+{
+  "contextdataloader": {
+    "scope": "javascript",
+    "prefix": "contextdataloader",
+    "body": ["context: () => ({ dataloaders: loadConfig() }),"]
+  },
+  "loadconfig": {
+    "scope": "javascript",
+    "prefix": "loadconfig",
+    "body": ["import { loadConfig, resolvers } from \"./src/loader\";"]
+  },
+  "bookid": {
+    "scope": "javascript",
+    "prefix": "bookid",
+    "body": ["context.dataloaders.books.load(args.id)"]
+  },
+  "authorid": {
+    "scope": "javascript",
+    "prefix": "authorid",
+    "body": ["context.dataloaders.authors.load(args.id)"]
+  },
+  "allbooks": {
+    "scope": "javascript",
+    "prefix": "allbooks",
+    "body": [
+      "const books = await context.dataloaders.queries.load(\"allBooks\");\nbooks.forEach((book) => context.dataloaders.books.prime(book.id, book));\nreturn books;"
+    ]
+  },
+  "allauthors": {
+    "scope": "javascript",
+    "prefix": "allauthors",
+    "body": [
+      "const authors = await context.dataloaders.queries.load(\"allAuthors\");\nauthors.forEach((author) => context.dataloaders.authors.prime(author.id, author));\nreturn authors;"
+    ]
+  },
+  "fieldbookauthor": {
+    "scope": "javascript",
+    "prefix": "fieldbookauthor",
+    "body": ["context.dataloaders.authors.load(obj.authorId)"]
+  },
+  "fieldauthorbook": {
+    "scope": "javascript",
+    "prefix": "fieldauthorbook",
+    "body": [
+      "const books = await context.dataloaders.booksByAuthors.load(obj.id);\nbooks.forEach((book) => context.dataloaders.books.prime(book.id, book));\nreturn books;"
+    ]
+  },
+  "bookloader": {
+    "scope": "javascript",
+    "prefix": "bookloader",
+    "body": ["books: new DataLoader(async (bookIds) => batchFindBooksByIds(bookIds)),"]
+  },
+  "authorloader": {
+    "scope": "javascript",
+    "prefix": "authorloader",
+    "body": ["authors: new DataLoader(async (authorIds) => batchFindAuthorsByIds(authorIds)),"]
+  },
+  "queriesloader": {
+    "scope": "javascript",
+    "prefix": "queriesloader",
+    "body": ["queries: new DataLoader(async (queries) => executeQueries(queries)),"]
+  },
+  "bookauthorloader": {
+    "scope": "javascript",
+    "prefix": "bookauthorloader",
+    "body": ["booksByAuthors: new DataLoader(async (authorIds) => batchFindBooksByAuthorIds(authorIds)),"]
+  }
+}

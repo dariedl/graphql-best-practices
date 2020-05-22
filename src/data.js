@@ -25,7 +25,7 @@ export const authors = [
     birthDate: "1931-04-19",
   },
   {
-    id: "a5",
+    id: "a6",
     name: "Gene Kim",
   },
 ];
@@ -40,7 +40,7 @@ export const books = [
   },
   {
     id: "b2",
-    title: "Harry Potter and the Philosphers Stone",
+    title: "Harry Potter and the Philosopher's Stone",
     genres: ["fantasy", "mystery"],
     type: "fiction",
     authorId: "a2",
@@ -50,7 +50,7 @@ export const books = [
     title: "The Phoenix Project",
     genres: ["software"],
     type: "fiction",
-    authorId: "a5",
+    authorId: "a6",
   },
   {
     id: "b4",
