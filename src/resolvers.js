@@ -11,7 +11,7 @@ export default {
     authorById: (obj, args, context, info) => findAuthorById(args.id),
     allAuthors: (obj, args, context, info) => findAllAuthors(),
   },
-  // Field Resolvers ------------------------------------------------------------------------
+  // Field Resolvers -------------------------------------------------------
   Book: {
     author: (obj, args, context, info) => findAuthorById(obj.authorId),
     genre: (obj, args, context, info) => "deprecated",
