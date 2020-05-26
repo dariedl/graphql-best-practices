@@ -4,8 +4,8 @@ export const typeDefs = gql`
   type Query {
     bookById(id: ID!): Book
     booksByGenre(genre: String!): [Book]
-    allBooks: [Book]!
-    authorById(id: ID!): Author!
+    allBooks: [Book!]!
+    authorById(id: ID!): Author
     allAuthors: [Author!]
   }
 
@@ -31,7 +31,7 @@ export const typeDefs = gql`
     title: String!
     author: Author!
     type: String
-    genres: [String!] 
+    genres: [String!]
     genre: String @deprecated(reason: "Use genres instead")
   }
 
